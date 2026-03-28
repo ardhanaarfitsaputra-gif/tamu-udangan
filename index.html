@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Digital</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: black;
+      color: white;
+      text-align: center;
+    }
+
+    #cover {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #videoPage {
+      display: none;
+    }
+
+    video {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      background: gold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HALAMAN AWAL -->
+  <div id="cover">
+    <h2>Kepada Yth:</h2>
+    <h1 id="namaTamu">Tamu Undangan</h1>
+
+    <button onclick="bukaUndangan()">Buka Undangan</button>
+  </div>
+
+  <!-- HALAMAN VIDEO -->
+  <div id="videoPage">
+    <video id="vid" controls>
+      <source src="Green Flower Watercolor Wedding Invitation Mobile Video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <script>
+    // Ambil nama dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const nama = urlParams.get('to');
+
+    if (nama) {
+      document.getElementById("namaTamu").innerText = nama;
+    }
+
+    function bukaUndangan() {
+      document.getElementById("cover").style.display = "none";
+      document.getElementById("videoPage").style.display = "block";
+
+      const video = document.getElementById("vid");
+      video.play();
+    }
+  </script>
+
+</body>
+</html>
